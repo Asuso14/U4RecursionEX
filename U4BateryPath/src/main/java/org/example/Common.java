@@ -18,8 +18,39 @@ public class Common {
         System.out.println("7 - Mostrar suma");
     }
 
-    public static int UserMenuElection(){
-        
+    public static void UserMenuElection(){
+        int election = 0;
+        System.out.println("Elije una de las opciones del menu...");
+        try {
+            election = entry.nextInt();
+        }catch (InputMismatchException error){
+            UserElection();
+        }
+        switch (election){
+            case 1:
+                break;
+            case 2:
+                Exercises.investedNum(UserPositiveNumElection());
+                break;
+            case 3:
+                Exercises.investedNum();
+                break;
+            case 4:
+                if(Exercises.CheckBinaryValue(UserPositiveNumElection())){
+                    System.out.println("El numero es binario");
+                }else {
+                    System.out.println("El numero no es binario");
+                }
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            default:
+                break;
+        }
     }
 
     public static boolean UserElection(){
@@ -43,5 +74,8 @@ public class Common {
         }catch (InputMismatchException error){
             return UserPositiveNumElection();
         }
+    }
+    public static char[] CharVector(int value){
+        return new char[]{(char) value};
     }
 }

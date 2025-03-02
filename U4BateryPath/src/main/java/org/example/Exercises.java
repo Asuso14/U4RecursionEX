@@ -49,6 +49,14 @@ public class Exercises {
             return ConvertToBinary(num / 2) + num % 2;
         }
     }
+    public static void NaturalSum(int num, int Numbers, int TotalSum){
+        System.out.print(Numbers + " + ");
+        if(num == Numbers){
+            System.out.println(" = " + TotalSum);
+        }else {
+            ++Numbers;
+            TotalSum += Numbers;
+            NaturalSum(num,Numbers,TotalSum);
+        }
+    }
 }
-
-

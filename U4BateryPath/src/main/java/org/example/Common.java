@@ -1,4 +1,5 @@
 package org.example;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -30,10 +31,23 @@ public class Common {
             case 1:
                 break;
             case 2:
-                Exercises.investedNum(UserPositiveNumElection());
                 break;
             case 3:
-                Exercises.investedNum();
+                System.out.println("Opciones: ");
+                System.out.println("1. Ordenar Numero");
+                System.out.println("2. Ordenar Texto");
+                switch (entry.next()){
+                    case "1":
+                        Exercises.investedNum(UserPositiveNumElection());
+                        break;
+                    case "2":
+                        char [] temp = StringToChar(entry.next());
+                        Exercises.investChain(temp.length,temp);
+                        break;
+                    default:
+                        System.out.println("No has introducido una opcion valida, saliendo del programa...");
+                        break;
+                }
                 break;
             case 4:
                 if(Exercises.CheckBinaryValue(UserPositiveNumElection())){
@@ -43,10 +57,18 @@ public class Common {
                 }
                 break;
             case 5:
+                Exercises.ConvertToBinary(UserPositiveNumElection());
                 break;
             case 6:
+                char[] temp = StringToChar(entry.next());
+                if(Exercises.AlphabeticalSort(0,temp)){
+                    System.out.println("Esta ordenado!!");
+                }else {
+                    System.out.println("No esta ordenado :C");
+                }
                 break;
             case 7:
+                Exercises.NaturalSum(Common.UserPositiveNumElection(),1,1);
                 break;
             default:
                 break;
@@ -75,7 +97,13 @@ public class Common {
             return UserPositiveNumElection();
         }
     }
-    public static char[] CharVector(int value){
-        return new char[]{(char) value};
+//    public static char[] IntToChar(int value){
+//        return new char[]{(char) value};
+//    }
+    public static char[] StringToChar (String value){
+        return value.toCharArray();
+    }
+    public static void CleanTerminal() throws IOException, InterruptedException {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 }
